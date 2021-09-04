@@ -18,18 +18,28 @@
                     </div>
                     @endif
 
-                    <form method="post" action="{{ route('employees.store')}}">
+                    {{-- <form method="post" action="{{ route('employees.store')}}"> --}}
+                    {!! Form::open([
+                    'url' => route('employees.store'),
+                    'method' => 'post'
+                    ]) !!}
                         @csrf
                         <div class="form-group">
                             <label for="first_name">First Name</label>
-                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="">
+                            {{-- <input type="text" class="form-control" id="first_name" name="first_name" placeholder=""> --}}
+                            {!!Form::text('first_name', '',[
+                                'id' => "first_name", 'class' => "form-control", 'placeholder' => ""
+                            ])!!}
                             @error('first_name')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="last_name">Last Name</label>
-                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="">
+                            {{-- <input type="text" class="form-control" id="last_name" name="last_name" placeholder=""> --}}
+                            {!!Form::text('last_name', '',[
+                                'id' => "last_name", 'class' => "form-control", 'placeholder' => ""
+                            ])!!}
                             @error('last_name')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -48,20 +58,29 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="">
+                            {{-- <input type="email" class="form-control" id="email" name="email" placeholder=""> --}}
+                            {!!Form::email('email', '',[
+                                'id' => "email", 'class' => "form-control", 'placeholder' => ""
+                            ])!!}
+
                             @error('email')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="">
+                            {{-- <input type="text" class="form-control" id="phone" name="phone" placeholder=""> --}}
+                            {!!Form::text('phone', '',[
+                                'id' => "phone", 'class' => "form-control", 'placeholder' => ""
+                            ])!!}
                             @error('phone')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                        {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
+                        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+                    {{-- </form> --}}
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

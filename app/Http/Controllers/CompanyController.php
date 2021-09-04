@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Company;
+    use App\DataTables\CompanyDataTable;
     use App\Http\Requests\StoreCompany;
     use App\Http\Requests\UpdateCompany;
     use Illuminate\Support\Facades\Storage;
@@ -22,10 +23,10 @@
          * Display a listing of the resource.
          *
          */
-        public function index()
-        {
-            return view('companies.index');
-        }
+        public function index(CompanyDataTable $dataTable)
+    {
+        return $dataTable->render('companies.index');
+    }
 
         /**
          * Show the form for creating a new resource.

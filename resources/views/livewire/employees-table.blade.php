@@ -30,11 +30,16 @@
                 <td>
                     <div class="d-flex">
                         <a class="btn btn-primary mr-1" href="{{ route('employees.edit', $employee->id) }}">Edit</a>
-                        <form action="{{ route('employees.destroy', $employee->id) }}" method="POST">
+                        {{-- <form action="{{ route('employees.destroy', $employee->id) }}" method="POST"> --}}
+                        {!! Form::open([
+                        'url' => route('employees.destroy', $employee->id),
+                        'method' => 'POST'
+                        ]) !!}
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                        {{-- </form> --}}
+                        {!! Form::close() !!}
                     </div>
                 </td>
             </tr>

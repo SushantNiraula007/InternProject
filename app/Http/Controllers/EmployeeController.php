@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\DataTables\EmployeeDataTable;
 use App\Company;
 use App\Http\Requests\StoreEmployee;
 use App\Http\Requests\UpdateEmployee;
@@ -23,9 +24,9 @@ class EmployeeController extends Controller
      * Display a listing of the resource.
      *
      */
-    public function index()
+    public function index(EmployeeDataTable $dataTable)
     {
-        return view('employees.index');
+        return $dataTable->render('employees.index');
     }
 
     /**
